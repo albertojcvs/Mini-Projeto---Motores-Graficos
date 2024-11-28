@@ -1,0 +1,38 @@
+# Logs e caches de build do Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Metadados do Unity que são gerados automaticamente
+UserSettings/
+
+# Cache do Visual Studio/IDE
+.vscode/
+*.csproj
+*.pidb
+*.sln
+*.suo
+*.user
+*.unityproj
+*.booproj
+*.tmproj
+*.log
+*.pdb
+*.ilk
+*.aps
+
+# Diretório da Unity Cloud Build
+/[Cc]ache/
+
+# Configuração específica de máquinas
+*.swp
+*.lock
+*.tmp
+*.userprefs
