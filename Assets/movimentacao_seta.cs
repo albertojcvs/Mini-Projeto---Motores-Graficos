@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
-public class MovimentacaoWASD : MonoBehaviour
+public class MovimentacaoSeta : MonoBehaviour
 {
     public float maxSpeed = 10f;
     public float acceleration = 5f;
@@ -14,15 +12,22 @@ public class MovimentacaoWASD : MonoBehaviour
     private float currentSpeed = 0f;
 
     public TextMeshProUGUI textoVelocidade;
-
     private float forwardWay = 0f;
 
+    
+    public Camera camera;
+
+    void Start()
+    {
+    }
 
     void Update()
     {
-        float moveForward = Input.GetKey(KeyCode.W) ? 1f : (Input.GetKey(KeyCode.S) ? -1f : 0f);
-        float moveRight = Input.GetKey(KeyCode.D) ? 1f : (Input.GetKey(KeyCode.A) ? -1f : 0f);
+        
+        float moveForward = Input.GetKey(KeyCode.UpArrow) ? 1f : (Input.GetKey(KeyCode.DownArrow) ? -1f : 0f);
+        float moveRight = Input.GetKey(KeyCode.RightArrow) ? 1f : (Input.GetKey(KeyCode.LeftArrow) ? -1f : 0f);
 
+        
         if (moveForward != 0f)
         {
             forwardWay = moveForward;
@@ -35,13 +40,15 @@ public class MovimentacaoWASD : MonoBehaviour
             currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
         }
 
+        
         transform.Translate(Vector3.forward * currentSpeed * forwardWay * Time.deltaTime);
         transform.Translate(Vector3.right * moveRight * maxSpeed * Time.deltaTime);
 
+        
         textoVelocidade.text = "Speed: " + currentSpeed.ToString("F2");
 
+        
         RotateShip(moveRight);
-
     }
 
     void RotateShip(float moveRight)
